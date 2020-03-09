@@ -18,10 +18,10 @@ class DialogSelector extends PureComponent {
     this.setState({ loginStatus });
   };
 
-  onClose_ = () => {
+  onClose = () => {
     const { onClose } = this.props;
     this.setState({ loginStatus: null, registerStatus: null });
-    onClose_();
+    onClose();
   };
 
   printDialog = () => {

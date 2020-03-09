@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import RegisterDialog from "./components/RegisterDialog";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
