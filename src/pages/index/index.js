@@ -1,6 +1,6 @@
 import React from "react";
 
-import BasicLayout from "../../components/BasicLayout/BasicLayout";
+import BasicLayout from "../../layouts/BasicLayout/BasicLayout";
 
 export default class IndexPage extends React.Component {
   render() {

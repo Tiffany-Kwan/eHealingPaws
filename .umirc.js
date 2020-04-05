@@ -1,3 +1,10 @@
 export default {
-  plugins: ['umi-plugin-dva'],
-}
+  plugins: ["umi-plugin-dva"],
+  proxy: {
+    "/api": {
+      target: "https://dev.iecho.cc/",
+      changeOrigin: true,
+      pathRewrite: { "^/api": "" },
+    },
+  },
+};
