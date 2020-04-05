@@ -1,18 +1,23 @@
 import React, { Component } from "react";
+import { connect } from "dva";
 import { Form, Input, Button, Icon } from "antd";
 import styles from "./index.less";
 const FormItem = Form.Item;
-
-class Register extends Component {
+@connect((state) => ({
+  register: state.register,
+}))
+@Form.create()
+export default class Register extends Component {
   componentDidMount() {}
   componentWillUnmount() {
-    clearInterval(this.initial);
+    clearInterval(this.interval);
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields({ force: true }, (err, values) => {
       if (!err) {
+        console.log("register page submit: ", values);
         this.props.dispatch({
           type: "register/accountSubmit",
           payload: values,
@@ -21,7 +26,10 @@ class Register extends Component {
     });
   };
   render() {
-    const { form } = this.props;
+    const {
+      form,
+      register: { submitting },
+    } = this.props;
 
     const { getFieldDecorator } = form;
 
@@ -41,7 +49,7 @@ class Register extends Component {
     // };
     return (
       <div className={styles.mian}>
-        <Form {...layout}>
+        <Form {...layout} onSubmit={this.handleSubmit}>
           <FormItem label="First Name: ">
             {getFieldDecorator("firstName", { initialValue: null })(
               <Input size="large" autoComplete="off" placeholder="FirstName" />
@@ -75,7 +83,13 @@ class Register extends Component {
             })(<Input />)}
           </FormItem>
           <FormItem {...tailLayout}>
-            <Button icon="login" size="large" type="primary" htmlType="submit">
+            <Button
+              icon="login"
+              size="large"
+              loading={submitting}
+              type="primary"
+              htmlType="submit"
+            >
               {"Login"}
             </Button>
           </FormItem>
@@ -121,4 +135,4 @@ class Register extends Component {
     );
   }
 }
-export default Form.create()(Register);
+// export default Form.create()(Register);

@@ -13,7 +13,7 @@ export default {
         payload: { submitting: true },
       });
       const response = yield call(accountRegister, payload);
-      console.log("register. response: ", response);
+      console.log("register.response: ", response);
     },
   },
 
