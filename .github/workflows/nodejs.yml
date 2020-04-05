@@ -37,5 +37,5 @@ jobs:
         username: root
         password: 97eIafz@GJpsq0d
         port: 22
-        source: "dist/*"
+        source: "dist/"
         target: "/home/wwwroot/e.iecho.cc/" 
