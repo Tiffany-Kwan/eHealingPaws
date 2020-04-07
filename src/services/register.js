@@ -4,6 +4,6 @@ export async function accountRegister(value) {
   console.log("register service: ", value);
   return request("/user/register", {
     method: "POST",
-    data: value,
+    body: value,
   });
 }

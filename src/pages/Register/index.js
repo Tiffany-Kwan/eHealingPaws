@@ -18,9 +18,15 @@ export default class Register extends Component {
     this.props.form.validateFields({ force: true }, (err, values) => {
       if (!err) {
         console.log("register page submit: ", values);
+        const formData = new FormData();
+        formData.append("firstName", values.firstName);
+        formData.append("lastName", values.lastName);
+        formData.append("password", values.password);
+        formData.append("phone", values.phone);
+
         this.props.dispatch({
           type: "register/accountSubmit",
-          payload: values,
+          payload: formData,
         });
       }
     });
