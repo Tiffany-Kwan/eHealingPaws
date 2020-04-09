@@ -1,1 +1,0 @@
-# eHealingPaws-FrontEnd
