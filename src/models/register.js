@@ -1,5 +1,4 @@
 import { Register } from '@/services/register';
-import queryString from 'query-string';
 
 const Model = {
   namespace: 'userAndregister',
@@ -8,30 +7,25 @@ const Model = {
   },
   effects: {
     *submit({ payload }, { call, put }) {
-      let formData = new FormData();
-      formData.append('firstName', 'yiwen');
-      formData.append('lastName', 'Shang');
-      formData.append('password', '123456');
-      formData.append('phone', '13600000002');
+      const response = yield call(Register, payload);
 
-      // const formData = {
-      //   firstName: 'yiwen',
-      //   lastName: 'Shang',
-      //   password: '123456',
-      //   phone: '13600000002',
+      console.log('model response: ', response);
+
+      // const requestOptions = {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/x-www-form-urlencoded',
+      //     'Access-Control-Allow-Origin': '*',
+      //   },
+      //   body: queryString.stringify(payload),
       // };
-
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: queryString.stringify(payload),
-      };
-      fetch('https://dev.iecho.cc/api/user/register', requestOptions).then((message) => {
-        console.log(message);
-      });
+      // fetch('https://dev.iecho.cc/api/user/register', requestOptions)
+      //   .then((response) => {
+      //     return response.json();
+      //   })
+      //   .then((data) => {
+      //     console.log(data);
+      //   });
 
       // const response = yield call(Register, payload);
       // console.log('models, response: ', response);

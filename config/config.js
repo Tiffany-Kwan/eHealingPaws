@@ -150,15 +150,15 @@ export default defineConfig({
   },
   proxy: {
     '/api': {
-      target: 'https://dev.iecho.cc',
+      target: 'https://dev.iecho.cc/api',
       pathRewrite: { '^/api': '' },
       changeOrigin: true,
       headers: {
-        Host: 'dev.iecho.cc',
-        Origin: 'https://dev.iecho.cc',
-        Referer: 'https://dev.iecho.cc/',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        // Host: 'https://dev.iecho.cc',
+        // Origin: 'https://dev.iecho.cc',
+        // Referer: 'https://dev.iecho.cc/',
+        // 'Content-Type': 'application/json',
+        // 'Access-Control-Allow-Origin': '*',
       },
     },
   },
