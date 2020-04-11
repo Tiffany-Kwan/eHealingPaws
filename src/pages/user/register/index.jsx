@@ -1,6 +1,6 @@
 import { Form, Button, Col, Input, Popover, Progress, Row, Select, message } from 'antd';
 import React, { useState, useEffect } from 'react';
-import { Link, connect, router, FormattedMessage, formatMessage } from 'umi';
+import { Link, connect, history, router, FormattedMessage, formatMessage } from 'umi';
 import styles from './style.less';
 
 const FormItem = Form.Item;
@@ -46,12 +46,10 @@ const Register = ({ submitting, dispatch, userAndregister }) => {
 
     if (userAndregister.status === 'ok') {
       message.success('注册成功！');
-      router.push({
-        pathname: '/user/register-result',
-        state: {
-          account,
-        },
-      });
+      history.push('/');
+    } else if (userAndregister.status === 'error') {
+      message.err('该用户已存在');
+      form.resetFields();
     }
   }, [userAndregister]);
   useEffect(
@@ -61,18 +59,18 @@ const Register = ({ submitting, dispatch, userAndregister }) => {
     [],
   );
 
-  const onGetCaptcha = () => {
-    let counts = 59;
-    setcount(counts);
-    interval = window.setInterval(() => {
-      counts -= 1;
-      setcount(counts);
+  // const onGetCaptcha = () => {
+  //   let counts = 59;
+  //   setcount(counts);
+  //   interval = window.setInterval(() => {
+  //     counts -= 1;
+  //     setcount(counts);
 
-      if (counts === 0) {
-        clearInterval(interval);
-      }
-    }, 1000);
-  };
+  //     if (counts === 0) {
+  //       clearInterval(interval);
+  //     }
+  //   }, 1000);
+  // };
 
   const getPasswordStatus = () => {
     const value = form.getFieldValue('password');

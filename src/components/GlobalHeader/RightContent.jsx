@@ -26,6 +26,9 @@ const GlobalHeaderRight = (props) => {
       <Button type="link" className={`${styles.action}`}>
         <Link to="/user/register">Register</Link>
       </Button>
+      <Button type="link" className={`${styles.action}`}>
+        <Link to="/user/Login">Login</Link>
+      </Button>
       <HeaderSearch
         className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"

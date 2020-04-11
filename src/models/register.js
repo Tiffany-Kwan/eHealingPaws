@@ -10,29 +10,16 @@ const Model = {
       const response = yield call(Register, payload);
 
       console.log('model response: ', response);
+      if (response.code === '200') {
+        response.status = 'ok';
+      } else {
+        response.status = 'error';
+      }
 
-      // const requestOptions = {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded',
-      //     'Access-Control-Allow-Origin': '*',
-      //   },
-      //   body: queryString.stringify(payload),
-      // };
-      // fetch('https://dev.iecho.cc/api/user/register', requestOptions)
-      //   .then((response) => {
-      //     return response.json();
-      //   })
-      //   .then((data) => {
-      //     console.log(data);
-      //   });
-
-      // const response = yield call(Register, payload);
-      // console.log('models, response: ', response);
-      // yield put({
-      //   type: 'registerHandle',
-      //   payload: response,
-      // });
+      yield put({
+        type: 'registerHandle',
+        payload: response,
+      });
     },
   },
   reducers: {

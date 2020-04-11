@@ -1,6 +1,6 @@
 import { stringify } from 'querystring';
 import { history } from 'umi';
-import { fakeAccountLogin } from '@/services/login';
+import { Login } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 
@@ -11,15 +11,26 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      console.log('login models payload: ', payload);
+      const res = yield call(Login, payload);
+      console.log('Login response: ', res);
+      let response = JSON.parse(res);
+
+      if (response.code === 200) {
+        response.status = 'ok';
+      } else {
+        response.status = 'error';
+      }
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
-
-      if (response.status === 'ok') {
+      console.log('Login response JSON: ', response);
+      if (response.code === 200) {
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
+        console.log('urlParams: ', urlParams);
+        console.log('getPageQuery(): ', params);
         let { redirect } = params;
 
         if (redirect) {
