@@ -71,10 +71,22 @@ const BasicLayout = (props) => {
   useEffect(() => {
     if (dispatch) {
       dispatch({
-        type: 'user/fetchCurrent',
+        // type: 'user/fetchCurrent',
+        type: 'global/getCurrentUser',
+        payload: localStorage.getItem('user'),
       });
     }
   }, []);
+  console.log("use effect sessionStorage.getItem('user'): ", localStorage.getItem('user'));
+  // componentDidMount(() => {
+  //   if (dispatch) {
+  //     dispatch({
+  //       type: 'global/getCurrentUser',
+  //       payload: sessionStorage.getItem('user'),
+  //     });
+  //   }
+  // }, []);
+
   /**
    * init variables
    */

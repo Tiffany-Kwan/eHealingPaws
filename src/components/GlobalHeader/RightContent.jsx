@@ -16,20 +16,32 @@ const ENVTagColor = {
 const GlobalHeaderRight = (props) => {
   const { theme, layout } = props;
   let className = styles.right;
-
+  let currentUser = null;
+  currentUser = localStorage.getItem('user');
   if (theme === 'dark' && layout === 'topmenu') {
     className = `${styles.right}  ${styles.dark}`;
   }
-
+  const logBtn = currentUser ? (
+    <Button type="link" className={`${styles.action}`}>
+      <Link to="/user/Login">Log out</Link>
+    </Button>
+  ) : (
+    <Button type="link" className={`${styles.action}`}>
+      <Link to="/user/Login">Login</Link>
+    </Button>
+  );
   return (
     <div className={className}>
       <Button type="link" className={`${styles.action}`}>
         <Link to="/user/register">Register</Link>
       </Button>
-      <Button type="link" className={`${styles.action}`}>
-        <Link to="/user/Login">Login</Link>
-      </Button>
-      <HeaderSearch
+
+      {logBtn}
+      {/* <Button type="link" className={`${styles.action}`}>
+          <Link to="/user/Login">Login</Link>
+        </Button> */}
+
+      {/* <HeaderSearch
         className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"
         defaultValue="umi ui"
@@ -69,7 +81,7 @@ const GlobalHeaderRight = (props) => {
         <span>
           <Tag color={ENVTagColor[REACT_APP_ENV]}>{REACT_APP_ENV}</Tag>
         </span>
-      )}
+      )} */}
       <SelectLang className={styles.action} />
     </div>
   );

@@ -50,4 +50,5 @@ export default {
   'menu.editor.mind': '腦圖編輯器',
   'menu.editor.koni': '拓撲編輯器',
   'menu.Healing Paws': 'Healing Paws-TW',
+  'menu.New Appointment': 'New Appointment',
 };

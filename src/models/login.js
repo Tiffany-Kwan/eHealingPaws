@@ -30,7 +30,14 @@ const Model = {
 
       console.log('Login response JSON: ', response);
       if (response.code === 200) {
-        const urlParams = new URL(window.location.href);
+        let user = null;
+        user = {
+          userId: response.data.userId,
+          userName: response.data.firstName + ' ' + response.data.lastName,
+          authority: response.data.currentAuthority,
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+        //const urlParams = new URL(window.location.href);
         // const params = getPageQuery();
         // console.log('urlParams: ', urlParams);
         // console.log('getPageQuery(): ', params);
@@ -51,7 +58,7 @@ const Model = {
         //   }
         // }
 
-        history.replace(redirect || '/');
+        history.replace('/');
       }
     },
 
