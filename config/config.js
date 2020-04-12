@@ -21,7 +21,7 @@ export default defineConfig({
   },
   locale: {
     // default zh-CN
-    default: 'zh-CN',
+    default: 'en-US',
     // default true, when it is true, will use `navigator.language` overwrite default
     antd: true,
     baseNavigator: true,
@@ -61,12 +61,13 @@ export default defineConfig({
           routes: [
             {
               path: '/',
-              redirect: '/welcome',
+              name: 'Healing Paws',
+              //redirect: '/index',
+              component: './index',
             },
             {
               path: '/welcome',
               name: 'welcome',
-              icon: 'smile',
               component: './Welcome',
             },
             {
