@@ -71,6 +71,11 @@ export default defineConfig({
               component: './Welcome',
             },
             {
+              path: '/newTicket',
+              name: 'New Appointment',
+              component: './Ticket',
+            },
+            {
               path: '/admin',
               name: 'admin',
               icon: 'crown',
