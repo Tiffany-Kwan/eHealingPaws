@@ -76,6 +76,16 @@ export default defineConfig({
               component: './Ticket',
             },
             {
+              path: '/ticketManagement',
+              name: 'Ticket Management',
+              component: './ticketManagement',
+            },
+            // {
+            //   path: '/test',
+            //   name: 'Test',
+            //   component: './test',
+            // },
+            {
               path: '/admin',
               name: 'admin',
               icon: 'crown',
@@ -154,20 +164,20 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
-  proxy: {
-    '/api': {
-      target: 'https://dev.iecho.cc/api',
-      pathRewrite: { '^/api': '' },
-      changeOrigin: true,
-      headers: {
-        // Host: 'https://dev.iecho.cc',
-        // Origin: 'https://dev.iecho.cc',
-        // Referer: 'https://dev.iecho.cc/',
-        // 'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin': '*',
-      },
-    },
-  },
+  // proxy: {
+  //   '/api': {
+  //     target: 'https://dev.iecho.cc/api',
+  //     pathRewrite: { '^/api': '' },
+  //     changeOrigin: true,
+  //     headers: {
+  //       // Host: 'https://dev.iecho.cc',
+  //       // Origin: 'https://dev.iecho.cc',
+  //       // Referer: 'https://dev.iecho.cc/',
+  //       // 'Content-Type': 'application/json',
+  //       // 'Access-Control-Allow-Origin': '*',
+  //     },
+  //   },
+  // },
   // proxy: proxy[REACT_APP_ENV || 'dev'],
   chainWebpack: webpackPlugin,
 });

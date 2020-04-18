@@ -1,7 +1,13 @@
-import request from 'umi-request';
-import queryString from 'query-string';
+//import request from 'umi-request';
+//import queryString from 'query-string';
+import request from '@/utils/request';
 
 export async function newTicket(params) {
+
+  return request('/api/ticket/tickets',{
+    method: 'GET',
+    data: params,
+  });
   //   const requestOptions = {
   //     method: 'POST',
   //     headers: {
